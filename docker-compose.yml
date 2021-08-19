@@ -1,8 +1,7 @@
 version: '3'
 
-# IMPOARTANT: make sure to create the three folders below, before you run docker-compose up!
-# mkdir wp-app
-# mkdir wp-data
+# IMPORTANT: make sure you create theme-name folder yourself before running docker-compose up!
+# else you will have a restricted folder and cannot make changes in the theme development.
 # mkdir theme-name
 
 services:
@@ -46,12 +45,6 @@ services:
         '--character-set-server=utf8mb4',
         '--collation-server=utf8mb4_unicode_ci'
     ]
-    volumes:
-      - ./wp-data:/docker-entrypoint-initdb.d
-      - db_data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: "${DB_NAME}"
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
-
-volumes:
-  db_data:
